@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // Change BrowserRouter to HashRouter
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import App from './app';
 import { AuthProvider } from './context/AuthContext';
 import './index.css';
