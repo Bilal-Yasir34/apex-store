@@ -10,44 +10,50 @@ export function useProducts() {
     async function fetchProducts() {
       try {
         setLoading(true);
+        
+        // --- FIXED: Ordering by created_at instead of 'featured' ---
+        // This ensures the query doesn't crash if 'featured' column is missing
         const { data, error } = await supabase
           .from('products')
           .select('*')
-          .order('featured', { ascending: false });
+          .order('created_at', { ascending: false });
 
-        if (error) throw error;
+        if (error) {
+          console.error("Supabase Query Error:", error.message);
+          throw error;
+        }
 
         if (data) {
           // --- DATA SANITIZATION LAYER ---
-          // This prevents the "Blank Screen" by ensuring no property is null/undefined
           const sanitizedData = data.map((product: any) => ({
             ...product,
             // Ensure ID is a string
-            id: product.id?.toString() || Math.random().toString(),
+            id: String(product.id || Math.random().toString(36).substr(2, 9)),
             
             // Ensure Name is a string
-            name: product.name || 'Unnamed Product',
+            name: String(product.name || 'Skoon Essential'),
             
             // Ensure Price is ALWAYS a valid number
-            // If the DB has "Rs 2500" or null, this converts it to 2500 or 0
             price: typeof product.price === 'number' 
               ? product.price 
               : parseFloat(String(product.price || '0').replace(/[^0-9.]/g, '')) || 0,
             
             // Ensure Image exists (Checks multiple common field names)
-            image_url: product.image_url || product.image || 'https://via.placeholder.com/400?text=No+Image',
+            image_url: product.image_url || product.image || (Array.isArray(product.images) && product.images[0]) || 'https://via.placeholder.com/400?text=No+Image',
             
-            // Ensure Section is a string
-            section: product.section || 'general',
+            // Ensure Section is a string and trimmed
+            // IMPORTANT: This makes sure 'featured ' (with space) becomes 'featured'
+            section: String(product.section || 'general').toLowerCase().trim(),
             
             // Ensure images is always an array
             images: Array.isArray(product.images) ? product.images : []
           }));
 
+          console.log("✅ Successfully loaded and sanitized products:", sanitizedData.length);
           setProducts(sanitizedData);
         }
       } catch (err) {
-        console.error("Critical error fetching products:", err);
+        console.error("Critical error in useProducts hook:", err);
       } finally {
         setLoading(false);
       }

@@ -1,7 +1,6 @@
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles, Wind, Flower2 } from 'lucide-react';
 
 export function Hero() {
-  // Helper function for smooth scrolling
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -10,91 +9,74 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-10 bg-white">
-      {/* Dynamic Background Blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-purple-200/40 rounded-full mix-blend-multiply filter blur-[120px] animate-blob"></div>
-        <div className="absolute top-[10%] right-[-5%] w-[500px] h-[500px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-pink-100/40 rounded-full mix-blend-multiply filter blur-[120px] animate-blob animation-delay-4000"></div>
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-10 bg-[#FCFAF7]">
+      
+      {/* --- BACKGROUND LAYER: SUBTLE FLOATING VISUALS --- */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        
+        {/* Soft Golden Glows */}
+        <div className="absolute top-[-5%] left-[-5%] w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full filter blur-[100px] animate-pulse"></div>
+        <div className="absolute bottom-[-5%] right-[-5%] w-[500px] h-[500px] bg-[#B8860B]/5 rounded-full filter blur-[100px] animate-pulse animation-delay-2000"></div>
+
+        {/* Shrunken, Faded Background Card 1 (Left) */}
+        <div className="absolute top-1/4 left-10 md:left-20 w-32 h-48 md:w-48 md:h-64 bg-white/40 rounded-2xl border border-[#D4AF37]/10 p-2 transform -rotate-12 opacity-40 animate-float">
+          <div className="w-full h-full rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#B8860B] flex items-center justify-center">
+             <Wind className="w-8 h-8 text-white/50" />
+          </div>
+        </div>
+
+        {/* Shrunken, Faded Background Card 2 (Right) */}
+        <div className="absolute bottom-1/4 right-10 md:right-32 w-28 h-28 md:w-40 md:h-40 bg-white/40 rounded-2xl border border-[#D4AF37]/10 p-2 transform rotate-12 opacity-50 animate-float animation-delay-2000">
+          <div className="w-full h-full rounded-xl bg-slate-900 flex items-center justify-center">
+             <Flower2 className="w-6 h-6 text-[#D4AF37]/50" />
+          </div>
+        </div>
+
+        {/* Shrunken, Faded Background Card 3 (Center-Top) */}
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-[#D4AF37]/5 rounded-full border border-[#D4AF37]/5 flex items-center justify-center opacity-30 animate-pulse">
+           <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="relative grid lg:grid-cols-2 gap-12 items-center">
+      {/* --- CONTENT LAYER --- */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+        <div className="max-w-4xl mx-auto">
           
-          {/* Text Content */}
-          <div className="text-center lg:text-left relative z-20 pointer-events-none">
-            <div className="pointer-events-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 mb-6 group hover:bg-purple-100 transition-all duration-300">
-                <Sparkles className="w-4 h-4 text-purple-600 group-hover:rotate-12 transition-transform duration-300" />
-                <span className="text-sm font-bold text-purple-700 tracking-wide uppercase">Premium Mobile Accessories</span>
-              </div>
-
-              <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[1.05] text-purple-900 tracking-tight">
-                Elevate Your <br />
-                <span className="bg-gradient-to-r from-purple-600 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                  Mobile Experience
-                </span>
-              </h1>
-
-              <p className="text-xl text-slate-500 mb-8 max-w-xl leading-relaxed font-medium mx-auto lg:mx-0">
-                Discover our collection of premium mobile accessories designed with precision engineering 
-                and clean aesthetics. Where technology meets lifestyle.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start">
-                <button
-                  onClick={() => scrollToSection('categories')}
-                  className="group relative px-10 py-5 rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-extrabold text-lg shadow-xl shadow-purple-500/25 transition-all duration-300 hover:scale-105 hover:shadow-purple-500/40 text-center"
-                >
-                  <span className="relative z-10 flex items-center gap-2 justify-center">
-                    Explore Collection
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </span>
-                </button>
-
-                <button
-                  onClick={() => scrollToSection('featured-products')}
-                  className="group px-10 py-5 rounded-2xl border-2 border-purple-500 bg-transparent text-purple-600 font-extrabold text-lg hover:bg-purple-50 transition-all duration-300 hover:scale-105 flex items-center gap-2 justify-center"
-                >
-                  View Featured
-                </button>
-              </div>
-            </div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#D4AF37]/20 mb-8 group hover:border-[#D4AF37] transition-all duration-300 shadow-sm">
+            <Sparkles className="w-4 h-4 text-[#D4AF37] group-hover:rotate-12 transition-transform duration-300" />
+            <span className="text-[10px] font-black text-[#D4AF37] tracking-[0.3em] uppercase">Premium Home Textiles</span>
           </div>
 
-          {/* Right Side Visuals */}
-          <div className="absolute lg:relative inset-0 lg:inset-auto h-full lg:h-[500px] flex items-center justify-center z-0 pointer-events-none">
-            <div className="relative w-full h-full flex items-center justify-center perspective-1000 scale-75 sm:scale-90 lg:scale-100">
-              
-              <div className="absolute inset-0 flex items-center justify-center animate-float opacity-15 lg:opacity-100 transition-all duration-700">
-                <div className="relative w-64 h-[350px] lg:w-80 lg:h-[420px] transform rotate-3 lg:rotate-3">
-                  <div className="absolute inset-0 rounded-[3rem] bg-white border border-white shadow-2xl p-4">
-                    <div className="w-full h-full rounded-[2.5rem] bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 flex flex-col items-center justify-center p-8 text-white">
-                      <div className="w-24 h-24 lg:w-32 lg:h-32 mb-8 rounded-3xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-                        <Sparkles className="w-12 h-12 lg:w-16 lg:h-16 text-white" />
-                      </div>
-                      <h3 className="font-black text-xl lg:text-2xl mb-1 text-center">MagSafe Ultra</h3>
-                      <p className="text-white/80 font-bold text-xs tracking-widest uppercase">Premium Case</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <h1 className="text-6xl md:text-9xl font-black mb-8 leading-[0.85] text-slate-900 tracking-tighter uppercase italic">
+            Experience <br />
+            <span className="bg-gradient-to-r from-[#D4AF37] via-[#B8860B] to-[#D4AF37] bg-clip-text text-transparent">
+              Pure Skoon
+            </span>
+          </h1>
 
-              <div className="absolute top-20 right-0 lg:top-10 lg:-right-4 animate-float animation-delay-2000 opacity-10 lg:opacity-100 transition-all duration-700">
-                <div className="w-32 h-32 lg:w-52 lg:h-52 rounded-[2rem] lg:rounded-[2.5rem] bg-white border border-white shadow-xl transform -rotate-6 p-3">
-                  <div className="w-full h-full rounded-[1.5rem] lg:rounded-[2rem] bg-gradient-to-tr from-indigo-400 to-purple-400 flex flex-col items-center justify-center p-4 text-white">
-                    <div className="w-10 h-10 lg:w-16 lg:h-16 mb-2 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30">
-                      <div className="w-4 h-4 rounded-full bg-white animate-pulse" />
-                    </div>
-                    <h3 className="font-black text-sm lg:text-lg">Quantum</h3>
-                    <p className="text-white/80 font-bold text-[6px] lg:text-[10px] tracking-widest uppercase">Charger</p>
-                  </div>
-                </div>
-              </div>
+          <p className="text-lg md:text-2xl text-slate-600 mb-10 max-w-2xl leading-relaxed font-medium mx-auto font-serif italic">
+            Masterfully crafted textiles designed to transform your home <br className="hidden md:block" /> 
+            into a sanctuary of peace and timeless elegance.
+          </p>
 
-            </div>
+          <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+            <button
+              onClick={() => scrollToSection('categories')}
+              className="group relative px-12 py-5 rounded-full bg-[#D4AF37] text-white font-black text-sm uppercase tracking-widest shadow-xl shadow-amber-900/10 transition-all duration-300 hover:bg-[#B8860B] hover:scale-105"
+            >
+              <span className="relative z-10 flex items-center gap-2 justify-center">
+                Explore Collections
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+            </button>
+
+            <button
+              onClick={() => scrollToSection('about')}
+              className="group px-12 py-5 rounded-full border border-[#D4AF37]/30 bg-white/50 backdrop-blur-sm text-[#D4AF37] font-black text-sm uppercase tracking-widest hover:bg-[#D4AF37] hover:text-white transition-all duration-300 hover:scale-105"
+            >
+              Our Story
+            </button>
           </div>
-
         </div>
       </div>
     </section>

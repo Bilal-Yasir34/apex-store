@@ -8,6 +8,8 @@ export default {
         'float': 'float 6s ease-in-out infinite',
         'breathing': 'breathing 4s ease-in-out infinite',
         'gradient': 'gradient 8s linear infinite',
+        'fade-in': 'fade-in 0.6s ease-out forwards', // Added for Skoon UI
+        'shimmer': 'shimmer 2s infinite linear',    // Added for Skeleton/Buttons
       },
       keyframes: {
         blob: {
@@ -28,8 +30,17 @@ export default {
           '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
           '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
         },
+        // NEW: Required for smooth component entry
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        // NEW: Required for the loading states
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
       },
-      // Added custom perspective for the 3D card effects
       perspective: {
         '1000': '1000px',
       },

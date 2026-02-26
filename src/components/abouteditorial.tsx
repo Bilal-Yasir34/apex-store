@@ -4,39 +4,41 @@ export function AboutEditorial() {
       <div className="max-w-4xl mx-auto">
         {/* Decorative Element */}
         <div className="flex items-center gap-4 mb-12">
-          <div className="h-[1px] w-12 bg-purple-600"></div>
-          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-purple-600">
-            Our Philosophy
+          {/* Changed bg-purple-600 to a rich Gold [#D4AF37] */}
+          <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
+          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37]">
+            The Skoon Heritage
           </span>
         </div>
 
         {/* Main Editorial Text */}
         <div className="space-y-12">
+          {/* Heading updated for Textile Brand */}
           <h2 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9] italic uppercase">
-            Redefining the <span className="text-purple-600">Art</span> of Modern Curation<span className="text-purple-600">.</span>
+            Weaving the <span className="text-[#D4AF37]">Threads</span> of Pure Comfort<span className="text-[#D4AF37]">.</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
             <p className="text-lg md:text-xl font-bold text-slate-900 leading-relaxed uppercase tracking-tight">
-              We believe that the objects you surround yourself with are a reflection of your internal landscape. In a world of mass production, we stand for the intentional and the exceptional.
+              At Skoon, we believe that your home is a sanctuary. The fabrics that touch your skin should be a testament to quality, tranquility, and timeless luxury.
             </p>
             <p className="text-slate-500 text-sm md:text-base leading-relaxed font-medium">
-              Our journey began with a simple observation: quality is often sacrificed at the altar of convenience. We decided to reverse that narrative. Every piece in our collection is vetted through a rigorous process of aesthetic and functional evaluation. We don't just sell products; we curate experiences that linger in the spaces you call home.
+              Our journey began with a dedication to the finest fibers and traditional craftsmanship. From our signature prayer mats to our velvet fleece collections, every piece is curated to bring a sense of 'Skoon'—peace—to your daily life. We don't just provide textiles; we craft the backdrop for your most cherished home moments.
             </p>
           </div>
 
           <div className="pt-12 border-t border-slate-100">
             <p className="text-slate-600 text-base md:text-lg leading-relaxed max-w-3xl">
-              From the initial sketch to the final polish, our commitment to excellence is unwavering. We collaborate with artisans who share our vision of a future where design serves humanity, not the other way around. This isn't just about commerce—it's about building a community of individuals who appreciate the nuances of a well-crafted life. 
+              From the intricate patterns of our floor rugs to the soft embrace of our comforters, our commitment to textile excellence is unwavering. We collaborate with master weavers who understand that luxury lies in the details—the weight of a throw, the sheen of a curtain, and the durability of a kitchen towel.
               <br /><br />
-              As we continue to evolve, our mission remains fixed: to provide you with the tools to build a life that is as unique as your signature. Thank you for being part of this movement toward a more beautiful, thoughtful world.
+              Skoon is more than a brand; it is an invitation to slow down and appreciate the tactile beauty of a well-furnished life. Thank you for choosing us to be a part of your home’s story.
             </p>
           </div>
 
           {/* Large Background Quote Styling */}
           <div className="pt-8 flex justify-end">
-            <span className="text-6xl md:text-9xl font-black text-slate-50 opacity-10 select-none uppercase italic">
-              Legacy
+            <span className="text-6xl md:text-9xl font-black text-slate-100 opacity-20 select-none uppercase italic">
+              Comfort
             </span>
           </div>
         </div>

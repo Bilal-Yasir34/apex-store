@@ -1,6 +1,5 @@
 import { ArrowRight, Loader2, SearchX } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
-export { ProductCard } from './productcard'; 
 import { ProductCard } from './productcard';
 
 interface ProductGridProps {
@@ -19,9 +18,9 @@ export function ProductGrid({ products, loading, onAddToCart }: ProductGridProps
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-20">
-        <Loader2 className="w-12 h-12 animate-spin text-purple-600 mb-4" />
-        <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Loading Apex Collection</p>
+      <div className="flex flex-col items-center justify-center py-32 bg-[#FCFAF7]">
+        <Loader2 className="w-12 h-12 animate-spin text-[#D4AF37] mb-6" />
+        <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Curating Skoon Textiles</p>
       </div>
     );
   }
@@ -38,58 +37,58 @@ export function ProductGrid({ products, loading, onAddToCart }: ProductGridProps
   // Handle empty search results
   if (searchTerm && filteredProducts.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center py-32 px-4 text-center">
-        <div className="p-6 rounded-full bg-slate-100 mb-6">
-          <SearchX className="w-12 h-12 text-slate-400" />
+      <div className="flex flex-col items-center justify-center py-40 px-4 text-center bg-white">
+        <div className="p-8 rounded-full bg-[#FCFAF7] border border-amber-50 mb-8">
+          <SearchX className="w-12 h-12 text-[#D4AF37] opacity-40" />
         </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">No results for "{searchTerm}"</h3>
-        <p className="text-slate-500 max-w-xs mx-auto mb-8">
-          Try checking your spelling or using more general keywords.
+        <h3 className="text-2xl font-black text-slate-900 mb-3 uppercase italic tracking-tighter">No matches found</h3>
+        <p className="text-slate-400 font-serif italic max-w-xs mx-auto mb-10 text-lg">
+          We couldn't find "{searchTerm}" in our current collection. Try a broader term or explore our essentials.
         </p>
         <button 
           onClick={() => navigate('/category/all')}
-          className="px-8 py-3 bg-purple-600 text-white rounded-2xl font-bold uppercase text-xs tracking-widest hover:bg-purple-700 transition-colors"
+          className="px-10 py-4 bg-slate-900 text-white rounded-full font-black uppercase text-[10px] tracking-[0.3em] hover:bg-[#D4AF37] transition-all shadow-xl"
         >
-          View All Products
+          Explore All Collections
         </button>
       </div>
     );
   }
 
   return (
-    <section id="products" className="py-12 relative z-20">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="products" className="py-16 relative z-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Search Results Header */}
         {searchTerm && (
-          <div className="mb-10 border-b border-slate-100 pb-6">
-            <h2 className="text-sm font-black uppercase tracking-[0.3em] text-purple-600 mb-2">Search Results</h2>
-            <p className="text-3xl font-bold text-slate-900 tracking-tighter">
-              Showing matches for "{searchTerm}"
+          <div className="mb-16 border-b border-amber-50 pb-8">
+            <h2 className="text-[10px] font-black uppercase tracking-[0.4em] text-[#D4AF37] mb-3">Discovery</h2>
+            <p className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase italic">
+              Results for <span className="text-[#D4AF37]">"{searchTerm}"</span>
             </p>
           </div>
         )}
 
         {/* Mobile Slider Layout */}
         <div className="lg:hidden">
-          <div className="flex overflow-x-auto pb-8 gap-4 snap-x snap-mandatory hide-scrollbar">
+          <div className="flex overflow-x-auto pb-10 gap-6 snap-x snap-mandatory hide-scrollbar">
             {mobileDisplayProducts.map((product) => (
-              <div key={product.id} className="min-w-[280px] snap-center">
+              <div key={product.id} className="min-w-[300px] snap-center">
                 <ProductCard product={product} onAddToCart={onAddToCart} />
               </div>
             ))}
             
             {!searchTerm && (
-              <div className="min-w-[200px] flex items-center justify-center snap-center pr-4">
+              <div className="min-w-[220px] flex items-center justify-center snap-center pr-4">
                 <button 
                   onClick={() => navigate('/category/all')}
-                  className="flex flex-col items-center gap-4 group active:scale-95 transition-transform"
+                  className="flex flex-col items-center gap-6 group active:scale-95 transition-transform"
                 >
-                  <div className="w-16 h-16 rounded-full bg-slate-800 border border-white/30 flex items-center justify-center text-white group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-xl">
+                  <div className="w-20 h-20 rounded-full bg-white border-2 border-amber-50 flex items-center justify-center text-slate-900 group-hover:border-[#D4AF37] group-hover:text-[#D4AF37] transition-all duration-500 shadow-xl shadow-amber-900/5">
                     <ArrowRight className="w-8 h-8" />
                   </div>
-                  <span className="font-black text-[10px] uppercase tracking-widest text-slate-900">
-                    See All Products
+                  <span className="font-black text-[10px] uppercase tracking-[0.3em] text-slate-900 border-b-2 border-transparent group-hover:border-[#D4AF37] transition-all">
+                    View Entire Catalog
                   </span>
                 </button>
               </div>
@@ -98,7 +97,7 @@ export function ProductGrid({ products, loading, onAddToCart }: ProductGridProps
         </div>
 
         {/* Desktop Grid Layout */}
-        <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} onAddToCart={onAddToCart} />
           ))}

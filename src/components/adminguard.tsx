@@ -9,7 +9,8 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
   if (loading) {
     return (
       <div className="h-screen w-full flex items-center justify-center bg-white">
-        <Loader2 className="w-10 h-10 animate-spin text-purple-600" />
+        {/* Changed text-purple-600 to text-[#D4AF37] for the Skoon Gold theme */}
+        <Loader2 className="w-10 h-10 animate-spin text-[#D4AF37]" />
       </div>
     );
   }

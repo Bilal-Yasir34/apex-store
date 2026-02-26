@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryImages = [
-  { id: 1, url: '/bannerimage.png', title: 'Premium Aesthetics' },
-  { id: 2, url: '/galleryimage2.png', title: 'Unmatched Quality' },
-  { id: 3, url: '/galleryimage3.png', title: 'Modern Lifestyle' },
+  { id: 1, url: '/galleryimage1.png', title: 'Premium Shawls' },
+  { id: 2, url: '/galleryimage2.png', title: 'Luxury Collection' },
+  { id: 3, url: '/galleryimage3.png', title: '100% Woolen Shawls' },
 ];
 
 export function Gallery() {
@@ -25,8 +25,7 @@ export function Gallery() {
 
   return (
     <section className="w-full bg-white overflow-hidden">
-      {/* Reduced height here: h-[400px] on mobile, h-[500px] on desktop */}
-      <div className="relative group h-[400px] lg:h-[500px] w-full">
+      <div className="relative group h-[400px] lg:h-[600px] w-full">
         {galleryImages.map((img, index) => (
           <div
             key={img.id}
@@ -39,34 +38,41 @@ export function Gallery() {
               alt={img.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent flex items-center p-8 md:p-20">
-              <h3 className="text-white text-3xl md:text-5xl font-black tracking-tighter max-w-xl leading-none">
-                {img.title.toUpperCase()}
-              </h3>
+            {/* Darker gradient for luxury feel */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent flex items-center p-8 md:p-24">
+              <div className="max-w-xl space-y-4">
+                <div className="h-[2px] w-12 bg-[#D4AF37]"></div>
+                <h3 className="text-white text-4xl md:text-7xl font-black tracking-tighter leading-[0.85] italic uppercase">
+                  {img.title.split(' ').slice(0, -1).join(' ')} <br />
+                  <span className="text-[#D4AF37]">{img.title.split(' ').pop()}</span>
+                </h3>
+              </div>
             </div>
           </div>
         ))}
 
+        {/* Navigation Buttons with Gold Hover */}
         <button 
           onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20"
+          className="absolute left-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/20 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-[#D4AF37] z-30"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button 
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20 z-20"
+          className="absolute right-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-black/20 backdrop-blur-md text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-[#D4AF37] z-30"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
 
-        <div className="absolute bottom-6 right-10 flex gap-2 z-20">
+        {/* Golden Progress Indicators */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 md:left-auto md:right-24 md:translate-x-0 flex gap-3 z-30">
           {galleryImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-1 transition-all duration-500 ${
-                index === currentIndex ? 'w-10 bg-white' : 'w-4 bg-white/30'
+              className={`h-[3px] transition-all duration-700 rounded-full ${
+                index === currentIndex ? 'w-16 bg-[#D4AF37]' : 'w-6 bg-white/40 hover:bg-white/60'
               }`}
             />
           ))}
